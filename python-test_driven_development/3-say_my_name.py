@@ -7,8 +7,8 @@ def say_my_name(first_name="", last_name=""):
     Prints "My name is <first_name> <last_name>"
 
     Args:
-        first_name (str): First name (default empty string)
-        last_name (str): Last name (default empty string)
+        first_name (str): First name
+        last_name (str): Last name
 
     Raises:
         TypeError: If first_name or last_name is not a string
