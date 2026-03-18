@@ -1,64 +1,23 @@
 #!/usr/bin/python3
-"""Module that defines a function to divide all elements of a matrix."""
+"""Module that defines a function to print a name safely."""
 
 
-def matrix_divided(matrix=None, div=None):
+def say_my_name(first_name="", last_name=""):
     """
-    Divides all elements of a matrix by div, rounded to 2 decimals.
+    Prints "My name is <first_name> <last_name>"
 
     Args:
-        matrix (list of lists): Matrix of integers/floats
-        div (int or float): Number to divide by
-
-    Returns:
-        list of lists: New matrix
+        first_name (str): First name
+        last_name (str): Last name
 
     Raises:
-        TypeError: If matrix is not a list of lists of integers/floats
-        TypeError: If rows are not same size
-        TypeError: If div is not a number
-        ZeroDivisionError: If div is 0
+        TypeError: If first_name or last_name is not a string
     """
 
-    if matrix is None:
-        raise TypeError(
-            "matrix must be a matrix (list of lists) of integers/floats"
-        )
-    if div is None:
-        raise TypeError("div must be a number")
+    if not isinstance(first_name, str):
+        raise TypeError("first_name must be a string")
 
-    if not isinstance(matrix, list) or len(matrix) == 0:
-        raise TypeError(
-            "matrix must be a matrix (list of lists) of integers/floats"
-        )
+    if not isinstance(last_name, str):
+        raise TypeError("last_name must be a string")
 
-    if not all(isinstance(row, list) for row in matrix):
-        raise TypeError(
-            "matrix must be a matrix (list of lists) of integers/floats"
-        )
-
-    for row in matrix:
-        if not all(isinstance(num, (int, float)) for num in row):
-            raise TypeError(
-                "matrix must be a matrix (list of lists) of integers/floats"
-            )
-
-    row_length = len(matrix[0])
-    if not all(len(row) == row_length for row in matrix):
-        raise TypeError("Each row of the matrix must have the same size")
-
-    if not isinstance(div, (int, float)):
-        raise TypeError("div must be a number")
-
-    if div == 0:
-        raise ZeroDivisionError("division by zero")
-
-    if div == float('inf') or div == float('-inf'):
-        return [[0.0 for _ in row] for row in matrix]
-
-    new_matrix = []
-    for row in matrix:
-        new_row = [round(num / div, 2) for num in row]
-        new_matrix.append(new_row)
-
-    return new_matrix
+    print(f"My name is {first_name} {last_name}")
