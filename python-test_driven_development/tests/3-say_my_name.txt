@@ -1,14 +1,21 @@
 >>> say_my_name = __import__('3-say_my_name').say_my_name
 
+# Normal usage
 >>> say_my_name("John", "Smith")
 My name is John Smith
 
 >>> say_my_name("Walter", "White")
 My name is Walter White
 
+# Last name omitted
 >>> say_my_name("Bob")
-My name is Bob 
+My name is Bob
 
+# No arguments
+>>> say_my_name()
+My name is
+
+# Type errors
 >>> say_my_name(12, "White")
 Traceback (most recent call last):
 ...
@@ -18,6 +25,3 @@ TypeError: first_name must be a string
 Traceback (most recent call last):
 ...
 TypeError: last_name must be a string
-
->>> say_my_name()
-My name is  
