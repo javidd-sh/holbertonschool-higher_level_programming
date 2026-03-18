@@ -40,5 +40,9 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    # Create new matrix with division result
+    # Handle division, including infinity edge cases
+    if div == float('inf') or div == float('-inf'):
+        return [[0.0 for _ in row] for row in matrix]
+
+    # Normal division
     return [[round(num / div, 2) for num in row] for row in matrix]
