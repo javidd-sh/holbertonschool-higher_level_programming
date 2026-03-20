@@ -1,23 +1,28 @@
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-# Normal text
+# Normal behavior
 >>> text_indentation("Hello world. How are you? I am fine: Thank you.")
 Hello world.
-
+ 
 How are you?
-
+ 
 I am fine:
-
+ 
 Thank you.
 
 # Leading/trailing spaces removed
->>> text_indentation("   Leading and trailing spaces.  Done?  ")
-Leading and trailing spaces.
+>>> text_indentation("  This is a test.  Another test?  ")
+This is a test.
+ 
+Another test?
 
-Done?
-
-# TypeError
+# Raises TypeError for non-string
 >>> text_indentation(123)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+>>> text_indentation(None)
 Traceback (most recent call last):
 ...
 TypeError: text must be a string
