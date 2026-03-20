@@ -18,6 +18,16 @@
 >>> add_integer(3.9, 1)
 4
 
+>>> add_integer(0, 0)
+0
+
+>>> add_integer(999999999, 1)
+1000000000
+
+>>> add_integer(-1000, 500)
+-500
+
+# Type errors
 >>> add_integer(1, "School")
 Traceback (most recent call last):
 ...
@@ -27,3 +37,40 @@ TypeError: b must be an integer
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
+
+>>> add_integer("Hello", 5)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+# NaN cases
+>>> add_integer(float('nan'))
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(1, float('nan'))
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+# Infinity cases
+>>> add_integer(float('inf'))
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(float('-inf'))
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(1, float('inf'))
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+>>> add_integer(1, float('-inf'))
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
