@@ -1,5 +1,6 @@
 >>> say_my_name = __import__('3-say_my_name').say_my_name
 
+# Normal cases
 >>> say_my_name("John", "Smith")
 My name is John Smith
 
@@ -9,15 +10,29 @@ My name is Walter White
 >>> say_my_name("Bob")
 My name is Bob 
 
+>>> say_my_name("", "")
+My name is  
+
+>>> say_my_name("Alice", "")
+My name is Alice 
+
+# Type errors
 >>> say_my_name(12, "White")
 Traceback (most recent call last):
 ...
 TypeError: first_name must be a string
 
->>> say_my_name("John", 5)
+>>> say_my_name("John", 123)
 Traceback (most recent call last):
 ...
 TypeError: last_name must be a string
 
->>> say_my_name()
-My name is  
+>>> say_my_name(None)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name("John", None)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
