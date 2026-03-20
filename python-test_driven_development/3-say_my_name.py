@@ -7,6 +7,7 @@ def say_my_name(first_name, last_name=""):
 
     first_name and last_name must be strings.
     last_name defaults to empty string.
+    Output has no extra spaces and ends with a newline.
     """
 
     # Type checking
@@ -22,4 +23,5 @@ def say_my_name(first_name, last_name=""):
     # Build full name safely
     full_name = "{} {}".format(first_name, last_name).strip()
 
-    print(f"My name is {full_name}")
+    # Print exactly one newline at the end, no extra spaces
+    print("My name is {}".format(full_name))
