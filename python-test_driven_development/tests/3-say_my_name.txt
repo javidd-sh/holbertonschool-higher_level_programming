@@ -8,22 +8,22 @@ My name is John Smith
 My name is Walter White
 
 >>> say_my_name("Bob")
-My name is Bob 
+My name is Bob
 
 >>> say_my_name("", "")
-My name is  
+My name is
 
 >>> say_my_name("Alice", "")
-My name is Alice 
+My name is Alice
 
 >>> say_my_name("Élise", "Dupont")
 My name is Élise Dupont
 
 >>> say_my_name(" 李", "雷")
-My name is  李 雷
+My name is 李 雷
 
 >>> say_my_name("  ", "  ")
-My name is    
+My name is
 
 # Type errors
 >>> say_my_name(12, "White")
