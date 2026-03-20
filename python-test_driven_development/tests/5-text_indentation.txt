@@ -3,17 +3,17 @@
 # Normal behavior
 >>> text_indentation("Hello world. How are you? I am fine: Thank you.")
 Hello world.
- 
+
 How are you?
- 
+
 I am fine:
- 
+
 Thank you.
 
 # Leading/trailing spaces removed
 >>> text_indentation("  This is a test.  Another test?  ")
 This is a test.
- 
+
 Another test?
 
 # Raises TypeError for non-string
@@ -26,3 +26,9 @@ TypeError: text must be a string
 Traceback (most recent call last):
 ...
 TypeError: text must be a string
+
+# Consecutive separators should not print empty lines
+>>> text_indentation("Wait... What?")
+Wait.
+
+What?
