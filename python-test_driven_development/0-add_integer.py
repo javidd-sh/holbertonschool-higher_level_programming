@@ -1,17 +1,18 @@
 #!/usr/bin/python3
-"""Module that defines add_integer(a, b=98) function."""
+"""Module for adding two integers."""
 
 
 def add_integer(a, b=98):
-    """Add two integers or floats and return an integer.
+    """Adds two integers and returns the result.
 
-    Floats are cast to integers.
-    Raises TypeError if a or b is not int or float (bool not allowed).
+    a and b must be integers or floats.
+    Floats are cast to integers before addition.
     """
 
-    if type(a) not in (int, float):
+    if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
-    if type(b) not in (int, float):
+
+    if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
 
     return int(a) + int(b)
