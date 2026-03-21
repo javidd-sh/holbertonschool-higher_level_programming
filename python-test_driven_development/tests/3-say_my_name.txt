@@ -18,6 +18,14 @@ First name only (last_name defaults to ""):
     >>> say_my_name("Bob")
     My name is Bob 
 
+--- Missing arguments ---
+
+No arguments at all:
+    >>> say_my_name()
+    Traceback (most recent call last):
+        ...
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
 --- TypeError: first_name not a string ---
 
 Integer as first_name:
