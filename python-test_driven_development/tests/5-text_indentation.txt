@@ -1,34 +1,100 @@
->>> text_indentation = __import__('5-text_indentation').text_indentation
+===========================
+Tests for text_indentation module
+===========================
 
-# Normal behavior
->>> text_indentation("Hello world. How are you? I am fine: Thank you.")
-Hello world.
+Import the function:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-How are you?
+--- Basic usage ---
 
-I am fine:
+Text with period:
+    >>> text_indentation("Hello.")
+    Hello.
+    <BLANKLINE>
 
-Thank you.
+Text with question mark:
+    >>> text_indentation("Hello?")
+    Hello?
+    <BLANKLINE>
 
-# Leading/trailing spaces removed
->>> text_indentation("  This is a test.  Another test?  ")
-This is a test.
+Text with colon:
+    >>> text_indentation("Hello:")
+    Hello:
+    <BLANKLINE>
 
-Another test?
+Multiple special characters:
+    >>> text_indentation("Hello. How are you? Fine: thanks.")
+    Hello.
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+    Fine:
+    <BLANKLINE>
+    thanks.
+    <BLANKLINE>
 
-# Raises TypeError for non-string
->>> text_indentation(123)
-Traceback (most recent call last):
-...
-TypeError: text must be a string
+--- No special characters ---
 
->>> text_indentation(None)
-Traceback (most recent call last):
-...
-TypeError: text must be a string
+Plain text with no special characters:
+    >>> text_indentation("Hello world")
+    Hello world
 
-# Consecutive separators should not print empty lines
->>> text_indentation("Wait... What?")
-Wait.
+--- Spaces handling ---
 
-What?
+No leading spaces on new line:
+    >>> text_indentation("Hello.   World.")
+    Hello.
+    <BLANKLINE>
+    World.
+    <BLANKLINE>
+
+--- Edge cases ---
+
+Empty string:
+    >>> text_indentation("")
+
+Single special character:
+    >>> text_indentation(".")
+    .
+    <BLANKLINE>
+
+Only special characters:
+    >>> text_indentation(".?:")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+No argument:
+    >>> text_indentation()
+    Traceback (most recent call last):
+        ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+--- TypeError ---
+
+Integer as text:
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Float as text:
+    >>> text_indentation(3.14)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+None as text:
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+List as text:
+    >>> text_indentation(["Hello."])
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
