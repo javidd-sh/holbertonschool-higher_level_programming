@@ -1,53 +1,85 @@
->>> say_my_name = __import__('3-say_my_name').say_my_name
+===========================
+Tests for say_my_name module
+===========================
 
-# Normal cases
->>> say_my_name("John", "Smith")
-My name is John Smith
+Import the function:
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
 
->>> say_my_name("Walter", "White")
-My name is Walter White
+--- Basic usage ---
 
->>> say_my_name("Bob")
-My name is Bob
+Both first and last name:
+    >>> say_my_name("John", "Smith")
+    My name is John Smith
 
->>> say_my_name("", "")
-My name is
+    >>> say_my_name("Walter", "White")
+    My name is Walter White
 
->>> say_my_name("Alice", "")
-My name is Alice
+First name only (last_name defaults to ""):
+    >>> say_my_name("Bob")
+    My name is Bob 
 
->>> say_my_name("Élise", "Dupont")
-My name is Élise Dupont
+--- TypeError: first_name not a string ---
 
->>> say_my_name(" 李", "雷")
-My name is 李 雷
+Integer as first_name:
+    >>> say_my_name(12, "White")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
 
->>> say_my_name("  ", "  ")
-My name is
+Float as first_name:
+    >>> say_my_name(3.14, "White")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
 
-# Type errors
->>> say_my_name(12, "White")
-Traceback (most recent call last):
-...
-TypeError: first_name must be a string
+None as first_name:
+    >>> say_my_name(None, "White")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
 
->>> say_my_name("John", 123)
-Traceback (most recent call last):
-...
-TypeError: last_name must be a string
+List as first_name:
+    >>> say_my_name(["John"], "White")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
 
->>> say_my_name(None)
-Traceback (most recent call last):
-...
-TypeError: first_name must be a string
+--- TypeError: last_name not a string ---
 
->>> say_my_name("John", None)
-Traceback (most recent call last):
-...
-TypeError: last_name must be a string
+Integer as last_name:
+    >>> say_my_name("John", 12)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
 
-# Missing first argument
->>> say_my_name()
-Traceback (most recent call last):
-...
-TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+Float as last_name:
+    >>> say_my_name("John", 3.14)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+None as last_name:
+    >>> say_my_name("John", None)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+List as last_name:
+    >>> say_my_name("John", ["Smith"])
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+--- Edge cases ---
+
+Empty strings:
+    >>> say_my_name("", "")
+    My name is  
+
+Empty first name with last name:
+    >>> say_my_name("", "Smith")
+    My name is  Smith
+
+Both names provided:
+    >>> say_my_name("Alice", "Wonderland")
+    My name is Alice Wonderland
