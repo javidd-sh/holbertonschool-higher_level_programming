@@ -11,10 +11,13 @@ def main():
     if len(sys.argv) != 5:
         return
 
-    user, password, db_name, state_name = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+    user = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
+    state_name = sys.argv[4]
 
     engine = create_engine(
-        f"mysql+mysqldb://{user}:{password}@localhost/{db_name}",
+        "mysql+mysqldb://{}:{}@localhost/{}".format(user, password, db_name),
         pool_pre_ping=True
     )
 
