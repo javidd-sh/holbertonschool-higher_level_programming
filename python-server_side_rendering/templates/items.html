@@ -1,11 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <title>Items List</title>
-</head>
 <body>
-    {% include 'header.html' %}
-
     <h1>Items List</h1>
 
     {% if items %}
@@ -17,7 +12,5 @@
     {% else %}
         <p>No items found.</p>
     {% endif %}
-
-    {% include 'footer.html' %}
 </body>
 </html>

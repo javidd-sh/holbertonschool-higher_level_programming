@@ -1,15 +1,23 @@
 import json
+import os
 from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# ... (keep your existing routes)
+def load_items():
+    if not os.path.exists('items.json'):
+        return []
+    with open('items.json', 'r') as f:
+        try:
+            data = json.load(f)
+            return data.get('items', [])
+        except json.JSONDecodeError:
+            return []
 
 @app.route('/items')
 def items():
-    # Load the JSON data
-    with open('items.json', 'r') as f:
-        data = json.load(f)
-    
-    # Pass the list of items to the template
-    return render_template('items.html', items=data.get('items', []))
+    item_list = load_items()
+    return render_template('items.html', items=item_list)
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
